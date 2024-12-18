@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        required: true,
         unique: true
     },
     email: {
@@ -36,11 +35,6 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: ()=>Date.now()
     }
-})
-
-userSchema.pre("save", function(next){
-    this.lastLogin = Date.now();
-    next();
 })
 
 module.exports = mongoose.model("User", userSchema);
